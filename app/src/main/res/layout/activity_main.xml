@@ -6,6 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--
+    NUMBER BUTTONS
+    -->
+    <Button
+        android:id="@+id/number0"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="#253736"
+        android:gravity="right|center_vertical"
+        android:onClick="escribirNumero"
+        android:text="0"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline207"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline206"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/number1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="#253736"
+        android:gravity="right|center_vertical"
+        android:onClick="escribirUno"
+        android:text="1"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline206"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline205" />
+
+    <Button
+        android:id="@+id/number2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="#253736"
+        android:gravity="right|center_vertical"
+        android:onClick="escribirDos"
+        android:text="2"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline206"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline205" />
+
     <Button
         android:id="@+id/number3"
         android:layout_width="0dp"
@@ -23,6 +75,135 @@
         app:layout_constraintTop_toTopOf="@+id/guideline205" />
 
     <Button
+        android:id="@+id/number4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="#253736"
+        android:gravity="right|center_vertical"
+        android:onClick="escribirCuatro"
+        android:text="4"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline205"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/number7"
+        app:layout_constraintTop_toTopOf="@+id/guideline204" />
+
+    <Button
+        android:id="@+id/number5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="#253736"
+        android:gravity="right|center_vertical"
+        android:onClick="escribirCinco"
+        android:text="5"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline205"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline204" />
+
+    <Button
+        android:id="@+id/number6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="#253736"
+        android:gravity="right|center_vertical"
+        android:onClick="escribirSeis"
+        android:text="6"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline205"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline204" />
+
+    <Button
+        android:id="@+id/number7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="#253736"
+        android:gravity="right|center_vertical"
+        android:onClick="escribirSiete"
+        android:text="7"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline204"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline203"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/number8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="#253736"
+        android:gravity="right|center_vertical"
+        android:onClick="escribirOcho"
+        android:text="8"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline204"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline203" />
+
+    <Button
+        android:id="@+id/number9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="#253736"
+        android:gravity="right|center_vertical"
+        android:onClick="escribirNueve"
+        android:text="9"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline204"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline203" />
+
+    <!--
+        SYMBOL BUTTONS
+    -->
+    <Button
+        android:id="@+id/percentSymbol"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="#253736"
+        android:gravity="center"
+        android:text="%"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline204"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toTopOf="@+id/guideline203" />
+
+    <Button
+        android:id="@+id/divisionSymbol"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="#253736"
+        android:gravity="center"
+        android:text="÷"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline203"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline202" />
+
+    <Button
         android:id="@+id/equalsSymbol"
         android:layout_width="180dp"
         android:layout_height="0dp"
@@ -34,7 +215,6 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/guideline206" />
-
 
 
     <TextView
@@ -166,37 +346,8 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="@+id/guideline202"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline202" />
 
-    <Button
-        android:id="@+id/percentSymbol"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:backgroundTint="#253736"
-        android:gravity="center"
-        android:text="%"
-        android:textSize="30dp"
-
-        app:layout_constraintBottom_toTopOf="@+id/guideline204"
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toTopOf="@+id/guideline203" />
-
-    <Button
-        android:id="@+id/divisionSymbol"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:backgroundTint="#253736"
-        android:gravity="center"
-        android:text="÷"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline203"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline202"/>
 
     <Button
         android:id="@+id/deleteButton"
@@ -213,39 +364,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline202" />
-
-    <Button
-        android:id="@+id/number8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:backgroundTint="#253736"
-        android:gravity="right|center_vertical"
-        android:onClick="escribirOcho"
-        android:text="8"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline204"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline203" />
-
-    <Button
-        android:id="@+id/number6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:backgroundTint="#253736"
-        android:gravity="right|center_vertical"
-        android:onClick="escribirSeis"
-        android:text="6"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline205"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="@+id/guideline204"
-        />
 
 
     <Button
@@ -276,40 +394,8 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline202"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline202" />
 
-    <Button
-        android:id="@+id/number7"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:backgroundTint="#253736"
-        android:gravity="right|center_vertical"
-        android:onClick="escribirSiete"
-        android:text="7"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline204"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline203"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/number9"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:backgroundTint="#253736"
-        android:gravity="right|center_vertical"
-        android:onClick="escribirNueve"
-        android:text="9"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline204"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="@+id/guideline203" />
 
     <Button
         android:id="@+id/dotSymbol"
@@ -326,54 +412,6 @@
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline206" />
 
-    <Button
-        android:id="@+id/number2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:backgroundTint="#253736"
-        android:gravity="right|center_vertical"
-        android:onClick="escribirDos"
-        android:text="2"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline206"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline205" />
-
-    <Button
-        android:id="@+id/number1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:backgroundTint="#253736"
-        android:gravity="right|center_vertical"
-        android:onClick="escribirUno"
-        android:text="1"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline206"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline205" />
-
-    <Button
-        android:id="@+id/number0"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:backgroundTint="#253736"
-        android:gravity="right|center_vertical"
-        android:onClick="escribirNumero"
-        android:text="0"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline207"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline206"
-        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/minusSymbol"
@@ -389,39 +427,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline205" />
-
-
-    <Button
-        android:id="@+id/number5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:backgroundTint="#253736"
-        android:gravity="right|center_vertical"
-        android:onClick="escribirCinco"
-        android:text="5"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline205"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline204" />
-
-    <Button
-        android:id="@+id/number4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:backgroundTint="#253736"
-        android:gravity="right|center_vertical"
-        android:onClick="escribirCuatro"
-        android:text="4"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline205"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/number7"
-        app:layout_constraintTop_toTopOf="@+id/guideline204" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
