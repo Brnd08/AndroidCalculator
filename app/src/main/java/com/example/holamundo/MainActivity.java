@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     float numero1 = 0.0f;
     float numero2 = 0.0f;
     String operacion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,89 +20,62 @@ public class MainActivity extends AppCompatActivity {
         tvResultado = findViewById(R.id.tvResultado);
     }
 
-    public void escribirNumero(View view){
+    public void escribirNumero(View view) {
+        String numeroPulsado = (((Button) view).getText().toString());
+
         tvResultado.setText(
-                ((Button)view) .getText() .toString()
+                procesarEscrituraNumero(numeroPulsado)
         );
     }
 
-    public void escribirUno(View view){
-        tvResultado.setText(procesarEscrituraNumero("1"));
-    }
-    public void escribirDos(View view){
-        tvResultado.setText(procesarEscrituraNumero("2"));
+    private String procesarEscrituraNumero(String numeroPulsado) {
 
-    }
-    public void escribirTres(View view){
-        tvResultado.setText(procesarEscrituraNumero("3"));
+        String valorEscrito = obtenerCadenaPantalla();
+        if(valorEscrito.isEmpty()){
+            return numeroPulsado;
+        }
 
-    }
-    public void escribirCuatro(View view){
-        tvResultado.setText(procesarEscrituraNumero("4"));
-
-    }
-    public void escribirCinco(View view){
-        tvResultado.setText(procesarEscrituraNumero("5"));
-
-    }
-    public void escribirSeis(View view){
-        tvResultado.setText(procesarEscrituraNumero("6"));
-
-    }
-    public void escribirSiete(View view){
-        tvResultado.setText(procesarEscrituraNumero("7"));
-
-    }
-    public void escribirOcho(View view){
-        tvResultado.setText(procesarEscrituraNumero("8"));
-
-    }
-    public void escribirNueve(View view){
-        tvResultado.setText(procesarEscrituraNumero("9"));
-
-    }
-    public void escribirCero(View view){
-        tvResultado.setText(procesarEscrituraNumero("10"));
-
-    }
-
-    private String procesarEscrituraNumero(String numeroPulsado){
-
-        String valorEscrito = tvResultado.getText().toString();
         float valor = Float.parseFloat(valorEscrito);
-
-        return (valor==0.0f)?
+        return (valor == 0.0f) ?
                 numeroPulsado
-                :valorEscrito + numeroPulsado;
+                : valorEscrito + numeroPulsado;
+
     }
-    private float obtenerNumeroPantalla(){
-        return Float.parseFloat(tvResultado.getText().toString());
+
+    private float obtenerNumeroPantalla() {
+        return Float.parseFloat(obtenerCadenaPantalla());
     }
-    private String obtenerCadenaPantalla(){
+
+    private String obtenerCadenaPantalla() {
         return (tvResultado.getText().toString());
     }
 
-    public void dividir(){
+    public void dividir() {
         numero1 = obtenerNumeroPantalla();
         operacion = "/";
         tvResultado.setText("0");
     }
-    public void mostrarResultado(View view){
+
+    public void mostrarResultado(View view) {
         numero2 = obtenerNumeroPantalla();
-        switch (operacion){
-            case "/" : {
+        switch (operacion) {
+            case "/": {
 
             }
-            case "*": {}
+            case "*": {
+            }
         }
 
     }
 
-    public void borrarUltimo(View view){
+    public void borrarUltimo(View view) {
         String numeroPantalla = obtenerCadenaPantalla();
-        tvResultado.setText(numeroPantalla.substring(0,numeroPantalla.length()-1));
+        if(numeroPantalla.isEmpty())
+            return;
+        tvResultado.setText(numeroPantalla.substring(0, numeroPantalla.length() - 1));
     }
-    public void borrarPantalla(View view){
-        tvResultado.setText("0");
+
+    public void borrarPantalla(View view) {
+        tvResultado.setText("");
     }
 }
