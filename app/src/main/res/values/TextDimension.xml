@@ -3,4 +3,5 @@
     <dimen name="symbolsSize">30sp</dimen>
     <dimen name="numbersSize">30sp</dimen>
     <dimen name="operationsSize">35sp</dimen>
+    <dimen name="screenTextSize">80sp</dimen>
 </resources>

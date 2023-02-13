@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void escribirNumero(View view) {
         String numeroPulsado = (((Button) view).getText().toString());
-
         tvResultado.setText(
                 procesarEscrituraNumero(numeroPulsado)
         );

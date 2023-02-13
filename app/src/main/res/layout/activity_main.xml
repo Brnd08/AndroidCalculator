@@ -311,7 +311,7 @@
         android:gravity="right|center_vertical"
         android:text="0"
         android:textColor="#FFF"
-        android:textSize="80dp"
+        android:textSize="@dimen/screenTextSize"
         app:layout_constraintBottom_toTopOf="@+id/guideline202"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
