@@ -14,17 +14,14 @@ import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
     TextView tvResultado;
-    float numero1 = 0.0f;
-    float numero2 = 0.0f;
     Pattern twoNumbersOperationsPattern;
     Pattern singleNumberOperationsPattern;
-    String operacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         twoNumbersOperationsPattern = Pattern.compile("(\\-?\\d*\\.?\\d+)([\\+\\-÷%x\\^])(\\-?\\d*\\.?\\d+)"); // operation regex
         singleNumberOperationsPattern = Pattern.compile("(\\btan|\\bcos|\\bsin|\\b1\\/x|\\blog|\\bln)(\\-?\\d*\\.?\\d+)"); // second operation regex
-//        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tvResultado = findViewById(R.id.tvResultado);
@@ -80,20 +77,16 @@ public class MainActivity extends AppCompatActivity {
                 float number1 = toFloat(twoNumbersOperationMatcher.group(1));
                 float number2 = toFloat(twoNumbersOperationMatcher.group(3));
                 String operator = twoNumbersOperationMatcher.group(2);
-
                 String result = String.valueOf(getResult(number1, number2, operator));
                 tvResultado.setText(result);
-
             } catch (Exception e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
 
         } else if (singleNumberOperationMatcher.matches()) {
             try {
-                Toast.makeText(this, "operacion de un numero", Toast.LENGTH_LONG).show();
                 String operator = singleNumberOperationMatcher.group(1);
                 float number1 = toFloat(singleNumberOperationMatcher.group(2));
-
                 String result = String.valueOf(getResult(number1, operator));
                 tvResultado.setText(result);
             } catch (Exception e) {
@@ -130,8 +123,6 @@ public class MainActivity extends AppCompatActivity {
             default:
                 result = 0.0f;
         }
-
-        System.out.println(number1 + " " + operation + " " + number2);
         return result;
     }
 
@@ -160,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
                 result = Math.pow(number, -1);
                 break;
         }
-        System.out.println(operation + " of " + number);
         return (float) result;
     }
 
@@ -191,12 +181,10 @@ public class MainActivity extends AppCompatActivity {
                 newScreenText = buttonText;
                 break;
             case "a^b":
-                newScreenText = "^";
+                newScreenText = screenText.concat("^");
                 break;
             case "ln/log":
-                newScreenText = screenText.contains("log") ? newScreenText = screenText.replaceFirst("log", "ln")
-                        : screenText.contains("ln") ? newScreenText = screenText.replaceFirst("ln", "log")
-                        : "ln";
+                newScreenText = screenText.contains("log") ? newScreenText = screenText.replaceFirst("log", "ln") : screenText.contains("ln") ? newScreenText = screenText.replaceFirst("ln", "log") : "ln";
                 break;
             default:
                 newScreenText = "";
