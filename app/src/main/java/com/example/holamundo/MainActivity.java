@@ -6,71 +6,168 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
     TextView tvResultado;
     float numero1 = 0.0f;
     float numero2 = 0.0f;
+    Pattern twoNumbersOperationsPattern;
+    Pattern singleNumberOperationsPattern;
     String operacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        twoNumbersOperationsPattern = Pattern.compile("(\\-?\\d*\\.?\\d+)([\\+\\-÷%x\\^])(\\-?\\d*\\.?\\d+)"); // operation regex
+        singleNumberOperationsPattern = Pattern.compile("(\\btan|\\bcos|\\bsin|\\b1\\/x|\\blog|\\bln)(\\-?\\d*\\.?\\d+)"); // second operation regex
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tvResultado = findViewById(R.id.tvResultado);
     }
 
-    public void escribirNumero(View view) {
-        String numeroPulsado = (((Button) view).getText().toString());
+    public void writeDigit(View view) {
         tvResultado.setText(
-                procesarEscrituraNumero(numeroPulsado)
+                processDigitWriting(getButtonText(view), getScreenString())
         );
     }
 
-    private String procesarEscrituraNumero(String numeroPulsado) {
+    public void writeSymbol(View view) {
+        tvResultado.setText(
+                processSymbolWriting(getButtonText(view), getScreenString())
+        );
+    }
 
-        String valorEscrito = obtenerCadenaPantalla();
-        if(valorEscrito.isEmpty()){
-            return numeroPulsado;
+    private String getButtonText(View view) {
+        return (((Button) view).getText().toString());
+    }
+
+    private String processDigitWriting(String pressedNumber, String screenText) {
+        if (screenText.isEmpty()) return pressedNumber;
+        return screenText + pressedNumber;
+    }
+
+    private float toFloat(String toParse) {
+        if (toParse.startsWith("."))
+            toParse = "0" + toParse;
+        try {
+            return Float.parseFloat(toParse);
+        } catch (NumberFormatException | NullPointerException e) {
+            return 0.0f;
         }
-
-        float valor = Float.parseFloat(valorEscrito);
-        return (valor == 0.0f) ?
-                numeroPulsado
-                : valorEscrito + numeroPulsado;
-
     }
 
-    private float obtenerNumeroPantalla() {
-        return Float.parseFloat(obtenerCadenaPantalla());
+    private String processSymbolWriting(String pressedSymbol, String screenText) {
+        if (screenText.isEmpty())
+            return pressedSymbol;
+        return screenText + pressedSymbol;
     }
 
-    private String obtenerCadenaPantalla() {
+    private float getScreenFloat() {
+        return toFloat(getScreenString());
+    }
+
+    private String getScreenString() {
         return (tvResultado.getText().toString());
     }
 
-    public void dividir() {
-        numero1 = obtenerNumeroPantalla();
-        operacion = "/";
-        tvResultado.setText("0");
+    public void operate(View view) {
+        Matcher twoNumbersOperationMatcher = twoNumbersOperationsPattern.matcher(getScreenString());
+        Matcher singleNumberOperationMatcher = singleNumberOperationsPattern.matcher(getScreenString());
+
+        if (twoNumbersOperationMatcher.matches()) {
+            Toast.makeText(this, "operacion de dos numeros", Toast.LENGTH_LONG).show();
+            float number1 = toFloat(twoNumbersOperationMatcher.group(1));
+            float number2 = toFloat(twoNumbersOperationMatcher.group(3));
+            String operator = twoNumbersOperationMatcher.group(2);
+
+            System.out.println(number1 + " " + operator + " " + number2);
+
+            String result = String.valueOf(getResult(number1, number2, operator));
+            tvResultado.setText(result);
+
+
+        } else if (singleNumberOperationMatcher.matches()) {
+            Toast.makeText(this, "operacion de un numero", Toast.LENGTH_LONG).show();
+            float number1 = toFloat(singleNumberOperationMatcher.group(1));
+            String operator = singleNumberOperationMatcher.group(2);
+
+            System.out.println(operator + " " + number1);
+
+            String result = String.valueOf(getResult(number1, operator));
+            tvResultado.setText(result);
+        } else {
+            Toast.makeText(this, "Input no valido", Toast.LENGTH_LONG).show();
+            return;
+        }
     }
 
-    public void mostrarResultado(View view) {
-        numero2 = obtenerNumeroPantalla();
-        switch (operacion) {
-            case "/": {
-
-            }
-            case "*": {
-            }
+    private float getResult(float number1, float number2, String operation) {
+        float result;
+        switch (operation) {
+            case "x":
+                result = number1 * number2;
+                break;
+            case "÷":
+                if(number2==0.0f)
+                result = number1 / number2;
+                break;
+            case "%":
+                result = number1 * number2 / 100;
+                break;
+            case "-":
+                result = number1 - number2;
+                break;
+            case "+":
+                result = number1 + number2;
+                break;
+            case "^":
+                result = (float) Math.pow(number1, number2);
+                break;
+            default:
+                result = 0.0f;
         }
 
+        System.out.println(number1 + " " + operation + " " + number2);
+        return result;
+    }
+
+    private float getResult(float number, String operation) {
+        double result;
+        switch (operation) {
+            case "cos":
+                result = Math.cos(number);
+                break;
+            case "tan":
+                result = Math.tan(number);
+                break;
+            case "sin":
+                result = Math.sin(number);
+                break;
+            case "ln":
+                result = Math.log(number);
+                break;
+            case "log":
+                result = Math.log10(number);
+                break;
+            case "1/x":
+                result = Math.pow(number, -1);
+                break;
+            default:
+                result = 0.0f;
+        }
+        System.out.println(operation + " of " + number);
+        return (float) result;
     }
 
     public void borrarUltimo(View view) {
-        String numeroPantalla = obtenerCadenaPantalla();
-        if(numeroPantalla.isEmpty())
+        String numeroPantalla = getScreenString();
+        if (numeroPantalla.isEmpty())
             return;
+
         tvResultado.setText(numeroPantalla.substring(0, numeroPantalla.length() - 1));
     }
 
