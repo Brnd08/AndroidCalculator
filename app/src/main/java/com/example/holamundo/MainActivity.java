@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
-    TextView tvResultado;
+    TextView resultScreen;
     Pattern twoNumbersOperationsPattern;
     Pattern singleNumberOperationsPattern;
 
@@ -24,16 +24,16 @@ public class MainActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tvResultado = findViewById(R.id.tvResultado);
-        tvResultado.setText("");
+        resultScreen = findViewById(R.id.tvResultado);
+        resultScreen.setText("");
     }
 
     public void writeDigit(View view) {
-        tvResultado.setText(processDigitWriting(getButtonText(view), getScreenString()));
+        resultScreen.setText(processDigitWriting(getButtonText(view), getScreenString()));
     }
 
     public void writeSymbol(View view) {
-        tvResultado.setText(processSymbolWriting(getButtonText(view), getScreenString()));
+        resultScreen.setText(processSymbolWriting(getButtonText(view), getScreenString()));
     }
 
     private String getButtonText(View view) {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private float toFloat(String toParse) {
-        if (toParse.startsWith(".")) toParse = "0" + toParse;
+        if (toParse.startsWith(".")) toParse = "0".concat(toParse);
         try {
             return Float.parseFloat(toParse);
         } catch (NumberFormatException | NullPointerException e) {
@@ -59,42 +59,37 @@ public class MainActivity extends AppCompatActivity {
         return screenText + pressedSymbol;
     }
 
-    private float getScreenFloat() {
-        return toFloat(getScreenString());
-    }
-
     private String getScreenString() {
-        return (tvResultado.getText().toString());
+        return (resultScreen.getText().toString());
     }
 
     public void operate(View view) {
-
         Matcher twoNumbersOperationMatcher = twoNumbersOperationsPattern.matcher(getScreenString());
         Matcher singleNumberOperationMatcher = singleNumberOperationsPattern.matcher(getScreenString());
 
-        if (twoNumbersOperationMatcher.matches()) {
+        if (twoNumbersOperationMatcher.matches())
             try {
                 float number1 = toFloat(twoNumbersOperationMatcher.group(1));
                 float number2 = toFloat(twoNumbersOperationMatcher.group(3));
                 String operator = twoNumbersOperationMatcher.group(2);
                 String result = String.valueOf(getResult(number1, number2, operator));
-                tvResultado.setText(result);
+                resultScreen.setText(result);
             } catch (Exception e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
 
-        } else if (singleNumberOperationMatcher.matches()) {
+         else if (singleNumberOperationMatcher.matches())
             try {
                 String operator = singleNumberOperationMatcher.group(1);
                 float number1 = toFloat(singleNumberOperationMatcher.group(2));
                 String result = String.valueOf(getResult(number1, operator));
-                tvResultado.setText(result);
+                resultScreen.setText(result);
             } catch (Exception e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
-        } else {
+         else
             Toast.makeText(this, "Input no valido", Toast.LENGTH_LONG).show();
-        }
+
     }
 
     private float getResult(float number1, float number2, String operation) throws Exception {
@@ -154,20 +149,20 @@ public class MainActivity extends AppCompatActivity {
         return (float) result;
     }
 
-    public void borrarUltimo(View view) {
+    public void eraseLast(View view) {
         String numeroPantalla = getScreenString();
         if (numeroPantalla.isEmpty()) return;
 
-        tvResultado.setText(numeroPantalla.substring(0, numeroPantalla.length() - 1));
+        resultScreen.setText(numeroPantalla.substring(0, numeroPantalla.length() - 1));
     }
 
-    public void borrarPantalla(View view) {
-        tvResultado.setText("");
+    public void cleanScreen(View view) {
+        resultScreen.setText("");
     }
 
 
     public void writeOperation(View view) {
-        tvResultado.setText(processOperationWriting(getButtonText(view), getScreenString()));
+        resultScreen.setText(processOperationWriting(getButtonText(view), getScreenString()));
     }
 
 
