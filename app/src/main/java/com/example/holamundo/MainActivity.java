@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tvResultado = findViewById(R.id.tvResultado);
+        tvResultado.setText("");
     }
 
     public void writeDigit(View view) {
@@ -75,44 +76,48 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void operate(View view) {
-        Matcher twoNumbersOperationMatcher = twoNumbersOperationsPattern.matcher(getScreenString());
-        Matcher singleNumberOperationMatcher = singleNumberOperationsPattern.matcher(getScreenString());
+        try {
 
-        if (twoNumbersOperationMatcher.matches()) {
-            Toast.makeText(this, "operacion de dos numeros", Toast.LENGTH_LONG).show();
-            float number1 = toFloat(twoNumbersOperationMatcher.group(1));
-            float number2 = toFloat(twoNumbersOperationMatcher.group(3));
-            String operator = twoNumbersOperationMatcher.group(2);
+            Matcher twoNumbersOperationMatcher = twoNumbersOperationsPattern.matcher(getScreenString());
+            Matcher singleNumberOperationMatcher = singleNumberOperationsPattern.matcher(getScreenString());
 
-            System.out.println(number1 + " " + operator + " " + number2);
+            if (twoNumbersOperationMatcher.matches()) {
+                float number1 = toFloat(twoNumbersOperationMatcher.group(1));
+                float number2 = toFloat(twoNumbersOperationMatcher.group(3));
+                String operator = twoNumbersOperationMatcher.group(2);
 
-            String result = String.valueOf(getResult(number1, number2, operator));
-            tvResultado.setText(result);
+                System.out.println(number1 + " " + operator + " " + number2);
+
+                String result = String.valueOf(getResult(number1, number2, operator));
+                tvResultado.setText(result);
 
 
-        } else if (singleNumberOperationMatcher.matches()) {
-            Toast.makeText(this, "operacion de un numero", Toast.LENGTH_LONG).show();
-            float number1 = toFloat(singleNumberOperationMatcher.group(1));
-            String operator = singleNumberOperationMatcher.group(2);
+            } else if (singleNumberOperationMatcher.matches()) {
+                Toast.makeText(this, "operacion de un numero", Toast.LENGTH_LONG).show();
+                float number1 = toFloat(singleNumberOperationMatcher.group(1));
+                String operator = singleNumberOperationMatcher.group(2);
 
-            System.out.println(operator + " " + number1);
+                System.out.println(operator + " " + number1);
 
-            String result = String.valueOf(getResult(number1, operator));
-            tvResultado.setText(result);
-        } else {
-            Toast.makeText(this, "Input no valido", Toast.LENGTH_LONG).show();
-            return;
+                String result = String.valueOf(getResult(number1, operator));
+                tvResultado.setText(result);
+            } else {
+                Toast.makeText(this, "Input no valido", Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
-    private float getResult(float number1, float number2, String operation) {
+    private float getResult(float number1, float number2, String operation) throws Exception {
         float result;
         switch (operation) {
             case "x":
                 result = number1 * number2;
                 break;
             case "÷":
-                if(number2==0.0f)
+                if (number2 == 0.0f)
+                    throw new Exception("No se puede dividir entre 0");
                 result = number1 / number2;
                 break;
             case "%":
@@ -125,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
                 result = number1 + number2;
                 break;
             case "^":
+                if (number1 == 0.0f)
+                    throw new Exception("0^0 no esta definido");
                 result = (float) Math.pow(number1, number2);
                 break;
             default:
@@ -135,8 +142,8 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    private float getResult(float number, String operation) {
-        double result;
+    private float getResult(float number, String operation) throws Exception {
+        double result = 0.0f;
         switch (operation) {
             case "cos":
                 result = Math.cos(number);
@@ -148,16 +155,20 @@ public class MainActivity extends AppCompatActivity {
                 result = Math.sin(number);
                 break;
             case "ln":
+                if (number == 0.0f)
+                    throw new Exception("ln(0) no esta definido");
                 result = Math.log(number);
                 break;
             case "log":
+                if (number == 0.0f)
+                    throw new Exception("log10(0) no esta definido");
                 result = Math.log10(number);
                 break;
             case "1/x":
+                if (number == 0.0f)
+                    throw new Exception("El cero no tiene inverso multiplicativo");
                 result = Math.pow(number, -1);
                 break;
-            default:
-                result = 0.0f;
         }
         System.out.println(operation + " of " + number);
         return (float) result;
