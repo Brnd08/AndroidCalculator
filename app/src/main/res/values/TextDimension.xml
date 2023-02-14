@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- vertical layout -->
     <dimen name="symbolsSize">30sp</dimen>
     <dimen name="numbersSize">30sp</dimen>
     <dimen name="operationsSize">35sp</dimen>
     <dimen name="screenTextSize">80sp</dimen>
+
+    <!-- horizontal layout -->
+    <dimen name="symbolsSizeHorizontal">30sp</dimen>
+    <dimen name="numbersSizeHorizontal">30sp</dimen>
+    <dimen name="operationsSizeHorizontal">35sp</dimen>
+    <dimen name="screenTextSizeHorizontal">80sp</dimen>
 </resources>

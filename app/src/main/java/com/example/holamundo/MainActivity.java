@@ -31,15 +31,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void writeDigit(View view) {
-        tvResultado.setText(
-                processDigitWriting(getButtonText(view), getScreenString())
-        );
+        tvResultado.setText(processDigitWriting(getButtonText(view), getScreenString()));
     }
 
     public void writeSymbol(View view) {
-        tvResultado.setText(
-                processSymbolWriting(getButtonText(view), getScreenString())
-        );
+        tvResultado.setText(processSymbolWriting(getButtonText(view), getScreenString()));
     }
 
     private String getButtonText(View view) {
@@ -52,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private float toFloat(String toParse) {
-        if (toParse.startsWith("."))
-            toParse = "0" + toParse;
+        if (toParse.startsWith(".")) toParse = "0" + toParse;
         try {
             return Float.parseFloat(toParse);
         } catch (NumberFormatException | NullPointerException e) {
@@ -62,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String processSymbolWriting(String pressedSymbol, String screenText) {
-        if (screenText.isEmpty())
-            return pressedSymbol;
+        if (screenText.isEmpty()) return pressedSymbol;
         return screenText + pressedSymbol;
     }
 
@@ -116,8 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 result = number1 * number2;
                 break;
             case "÷":
-                if (number2 == 0.0f)
-                    throw new Exception("No se puede dividir entre 0");
+                if (number2 == 0.0f) throw new Exception("No se puede dividir entre 0");
                 result = number1 / number2;
                 break;
             case "%":
@@ -130,8 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 result = number1 + number2;
                 break;
             case "^":
-                if (number1 == 0.0f)
-                    throw new Exception("0^0 no esta definido");
+                if (number1 == 0.0f) throw new Exception("0^0 no esta definido");
                 result = (float) Math.pow(number1, number2);
                 break;
             default:
@@ -155,18 +147,15 @@ public class MainActivity extends AppCompatActivity {
                 result = Math.sin(number);
                 break;
             case "ln":
-                if (number == 0.0f)
-                    throw new Exception("ln(0) no esta definido");
+                if (number == 0.0f) throw new Exception("ln(0) no esta definido");
                 result = Math.log(number);
                 break;
             case "log":
-                if (number == 0.0f)
-                    throw new Exception("log10(0) no esta definido");
+                if (number == 0.0f) throw new Exception("log10(0) no esta definido");
                 result = Math.log10(number);
                 break;
             case "1/x":
-                if (number == 0.0f)
-                    throw new Exception("El cero no tiene inverso multiplicativo");
+                if (number == 0.0f) throw new Exception("El cero no tiene inverso multiplicativo");
                 result = Math.pow(number, -1);
                 break;
         }
@@ -176,13 +165,41 @@ public class MainActivity extends AppCompatActivity {
 
     public void borrarUltimo(View view) {
         String numeroPantalla = getScreenString();
-        if (numeroPantalla.isEmpty())
-            return;
+        if (numeroPantalla.isEmpty()) return;
 
         tvResultado.setText(numeroPantalla.substring(0, numeroPantalla.length() - 1));
     }
 
     public void borrarPantalla(View view) {
         tvResultado.setText("");
+    }
+
+
+    public void writeOperation(View view) {
+        tvResultado.setText(processOperationWriting(getButtonText(view), getScreenString()));
+    }
+
+
+    public String processOperationWriting(String buttonText, String screenText) {
+        String newScreenText;
+        switch (buttonText) {
+            case "sin":
+            case "cos":
+            case "tan":
+            case "1/x":
+                newScreenText = buttonText;
+                break;
+            case "a^b":
+                newScreenText = "^";
+                break;
+            case "ln/log":
+                newScreenText = screenText.contains("log") ? newScreenText = screenText.replaceFirst("log", "ln")
+                        : screenText.contains("ln") ? newScreenText = screenText.replaceFirst("ln", "log")
+                        : "ln";
+                break;
+            default:
+                newScreenText = "";
+        }
+        return newScreenText;
     }
 }
