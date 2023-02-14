@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         twoNumbersOperationsPattern = Pattern.compile("(\\-?\\d*\\.?\\d+)([\\+\\-÷%x\\^])(\\-?\\d*\\.?\\d+)"); // operation regex
         singleNumberOperationsPattern = Pattern.compile("(\\btan|\\bcos|\\bsin|\\b1\\/x|\\blog|\\bln)(\\-?\\d*\\.?\\d+)"); // second operation regex
-
+//        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tvResultado = findViewById(R.id.tvResultado);
@@ -70,36 +71,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void operate(View view) {
-        try {
 
-            Matcher twoNumbersOperationMatcher = twoNumbersOperationsPattern.matcher(getScreenString());
-            Matcher singleNumberOperationMatcher = singleNumberOperationsPattern.matcher(getScreenString());
+        Matcher twoNumbersOperationMatcher = twoNumbersOperationsPattern.matcher(getScreenString());
+        Matcher singleNumberOperationMatcher = singleNumberOperationsPattern.matcher(getScreenString());
 
-            if (twoNumbersOperationMatcher.matches()) {
+        if (twoNumbersOperationMatcher.matches()) {
+            try {
                 float number1 = toFloat(twoNumbersOperationMatcher.group(1));
                 float number2 = toFloat(twoNumbersOperationMatcher.group(3));
                 String operator = twoNumbersOperationMatcher.group(2);
 
-                System.out.println(number1 + " " + operator + " " + number2);
-
                 String result = String.valueOf(getResult(number1, number2, operator));
                 tvResultado.setText(result);
 
+            } catch (Exception e) {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+            }
 
-            } else if (singleNumberOperationMatcher.matches()) {
+        } else if (singleNumberOperationMatcher.matches()) {
+            try {
                 Toast.makeText(this, "operacion de un numero", Toast.LENGTH_LONG).show();
-                float number1 = toFloat(singleNumberOperationMatcher.group(1));
-                String operator = singleNumberOperationMatcher.group(2);
-
-                System.out.println(operator + " " + number1);
+                String operator = singleNumberOperationMatcher.group(1);
+                float number1 = toFloat(singleNumberOperationMatcher.group(2));
 
                 String result = String.valueOf(getResult(number1, operator));
                 tvResultado.setText(result);
-            } else {
-                Toast.makeText(this, "Input no valido", Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
-        } catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Input no valido", Toast.LENGTH_LONG).show();
         }
     }
 
