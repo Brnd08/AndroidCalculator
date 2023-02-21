@@ -10,13 +10,11 @@
  
  ## Imagenes
 
-https://raw.githubusercontent.com/usuario/repositorio/rama/ruta/al/asset
-https://github.com/Brnd08/AndroidCalculator/tree/Main
-### Vertical Scape
+### Vertical Layout
 ![cal1](https://raw.githubusercontent.com/Brnd08/AndroidCalculator/Main/imagenes/calculadoraBasica.png)
-### Land Scape
+### Horizontal Scape
 ![calc2](https://raw.githubusercontent.com/Brnd08/AndroidCalculator/Main/imagenes/calculadoraCientifica.png)
-### Land Scape validation
+### LandScape validation
 ![calc3](https://raw.githubusercontent.com/Brnd08/AndroidCalculator/Main/imagenes/calculadoraValidacion.png)
 
  
