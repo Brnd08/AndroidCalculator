@@ -9,11 +9,14 @@
  ### Brdn_08
  
  ## Imagenes
-Vertical Scape
-![cal1](https://user-images.githubusercontent.com/93061195/218701720-8cc603d7-4478-4875-b508-26a106cf0835.jpg)
-Land Scape
-![calc2](https://user-images.githubusercontent.com/93061195/218701746-77e78e10-2003-4b97-b660-74ef61946090.png)
-Land Scape validation
-![calc3](https://user-images.githubusercontent.com/93061195/218701764-8a920fb4-1da3-456f-9b3b-64ba502d6507.png)
+
+https://raw.githubusercontent.com/usuario/repositorio/rama/ruta/al/asset
+https://github.com/Brnd08/AndroidCalculator/tree/Main
+### Vertical Scape
+![cal1](https://raw.githubusercontent.com/Brnd08/AndroidCalculator/Main/imagenes/calculadoraBasica.png)
+### Land Scape
+![calc2](https://raw.githubusercontent.com/Brnd08/AndroidCalculator/Main/imagenes/calculadoraCientifica.png)
+### Land Scape validation
+![calc3](https://raw.githubusercontent.com/Brnd08/AndroidCalculator/Main/imagenes/calculadoraValidacion.png)
 
  
