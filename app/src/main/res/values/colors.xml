@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="ScreenTextColor">#FFFFFFFF</color>
+    <color name="mainActivityBackgroundcolor">#FF03DAC5</color>
+    <color name="actionButtonsBackgroundColor">#06489e</color>
+    <color name="opertorButtonsBackgroundColor">#000000</color>
+    <color name="opertorButtonsTextColor">#FFFFFFFF</color>
+    <color name="numbersButtonsBackgroundColor">#253736</color>
+    <color name="numbersButtonsTextColor">#FFFFFFFF</color>
 </resources>
