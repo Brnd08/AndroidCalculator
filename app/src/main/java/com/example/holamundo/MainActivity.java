@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 float number2 = toFloat(twoNumbersOperationMatcher.group(3));
                 String operator = twoNumbersOperationMatcher.group(2);
                 float result = getResult(number1, number2, operator);
-                resultScreen.setText(String.format(Locale.US,"%.2f", result));
+                resultScreen.setText(String.format(Locale.US,"%.4f", result));
             } catch (Exception e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 String operator = singleNumberOperationMatcher.group(1);
                 float number1 = toFloat(singleNumberOperationMatcher.group(2));
                 float result = (getResult(number1, operator));
-                resultScreen.setText(String.format(Locale.US,"%.2f", result));
+                resultScreen.setText(String.format(Locale.US,"%.4f", result));
             } catch (Exception e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 float number1 = toFloat(logarithmMatcher.group(1));
                 float number2 = toFloat(logarithmMatcher.group(2));
                 float result = (getResult(number1, number2, "log"));
-                resultScreen.setText(String.format(Locale.US,"%.2f", result));
+                resultScreen.setText(String.format(Locale.US,"%.4f", result));
             }catch(Exception e){
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
@@ -189,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
                 result = Math.cos(Math.toRadians(number));
                 break;
             case "tan":
+                if (number == 90.0f) throw new Exception("Si no le sabe no le mueva");
                 result = Math.tan(Math.toRadians(number));
                 break;
             case "sin":
